@@ -2,6 +2,13 @@
 
 cd "$(dirname "$0")" || exit 1
 
+if ! command -v paru &> /dev/null; then
+	echo "You need to install the paru AUR helper first!"
+	exit 1
+fi
+
+paru -S python-torchvision-rocm
+
 python -m venv venv --system-site-packages
 
 source venv/bin/activate
